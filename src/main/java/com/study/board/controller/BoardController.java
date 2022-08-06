@@ -33,12 +33,13 @@ public class BoardController {
 
 
     @PostMapping("/board/writepro")
-    public String boardWritePro(Board board){
+    public String boardWritePro(Board board,Model model){
 
         boardService.boardWrite(board);
 
-
-        return "";
+        model.addAttribute("massage","글 작성이 완료되었습니다");
+        model.addAttribute("searchUrl","/board/list");
+        return "massage";
     }
 
     //게시물 리스트
