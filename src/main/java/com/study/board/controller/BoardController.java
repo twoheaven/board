@@ -15,23 +15,22 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    //기본 화면, http://localhost:8080/board/main
+    @GetMapping("/board/main")
+    public String boardMain() {
 
-    @GetMapping("/")
-    @ResponseBody
-    public String main() {
-
-        return "Khuromise board project";
+        return "boardmain";
     }
 
 
-    //게시물 작성
-    @GetMapping("/board/write") //localhost:8080/board/write
+    //게시물 작성, http://localhost:8080/board/write
+    @GetMapping("/board/write")
     public String boardWriteForm(){
 
         return "boardWrite";
     }
 
-
+    //임시 페이지
     @PostMapping("/board/writepro")
     public String boardWritePro(Board board,Model model){
 
@@ -39,7 +38,7 @@ public class BoardController {
 
         model.addAttribute("massage","글 작성이 완료되었습니다");
         model.addAttribute("searchUrl","/board/list");
-        return "massage";
+        return "massagewrite";
     }
 
     //게시물 리스트
@@ -75,6 +74,7 @@ public class BoardController {
         model.addAttribute("board",boardService.boardView(id));
         return "boardmodify";
     }
+
 
     @PostMapping("/board/update/{id}")
     public String boardUpdate(@PathVariable("id") Integer id, Board board){
