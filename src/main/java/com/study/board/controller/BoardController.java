@@ -22,11 +22,14 @@ public class BoardController {
         return "Khuromise board project";
     }
 
+
+    //게시물 작성
     @GetMapping("/board/write") //localhost:8080/board/write
     public String boardWriteForm(){
 
         return "boardWrite";
     }
+
 
     @PostMapping("/board/writepro")
     public String boardWritePro(Board board){
@@ -37,6 +40,7 @@ public class BoardController {
         return "";
     }
 
+    //게시물 리스트
     @GetMapping("/board/list")
     public String boardList(Model model){
 
@@ -44,5 +48,14 @@ public class BoardController {
         return "boardlist";
     }
 
+
+    //게시물 상세 페이지
+    @GetMapping("/board/view")//localhost:8080/board/view?id=1
+    public String boardView(Model model, Integer id){
+
+        model.addAttribute("board",boardService.boardView(id));
+
+        return "boardview";
+    }
 
 }
