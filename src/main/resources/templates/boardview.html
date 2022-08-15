@@ -8,6 +8,7 @@
 
 <h1 th:text="${board.title}"></h1>
 <p th:text="${board.content}"></p>
+<a th:href="@{${board.filepath}}">파일 다운로드</a>
 <a th:href="@{/board/delete(id=${board.id})}">글 삭제</a>
 <a th:href="@{/board/modify/{id}(id=${board.id})}">글 수정</a>
 
