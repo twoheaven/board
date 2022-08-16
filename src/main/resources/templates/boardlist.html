@@ -17,6 +17,10 @@
 <body>
   <div class = "layout">
       <h1><a href="http://localhost:8080/board/main">Khuromise</a></h1>
+      <form th:aciton="@{/board/list}" method="get">
+          <input type="text", name="searchKeyword">
+          <button type="submit">검색</button>
+      </form>
       <table>
         <thead>
           <tr>
@@ -39,10 +43,6 @@
             <a th:if="${page != nowPage}" th:href="/board/list(page = ${page - 1},searchKeyword = ${param.searchKeyword})" th:text="${page}"></a>
           <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
       </th:block>
-      <form th:aciton="@{/board/list}" method="get">
-          <input type="text", name="searchKeyword">
-          <button type="submit">검색</button>
-      </form>
   </div>
 </body>
 </html>
